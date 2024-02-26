@@ -8,7 +8,7 @@ from .. import crud, database, oauth2, schemas
 router = APIRouter(prefix="/vote", tags=["Vote"])
 
 
-@router.get("/", status_code=status.HTTP_201_CREATED)
+@router.post("/", status_code=status.HTTP_201_CREATED)
 def vote(
     vote: schemas.Vote,
     db: Annotated[Session, Depends(database.get_db)],
