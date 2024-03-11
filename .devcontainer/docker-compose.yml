@@ -23,9 +23,10 @@ services:
     restart: unless-stopped
     volumes:
       - postgres-data:/var/lib/postgresql/data
+      - ../create-multiple-postgresql-databases.sh:/docker-entrypoint-initdb.d/create-multiple-postgresql-databases.sh
     environment:
+      POSTGRES_MULTIPLE_DATABASES: postgres_test
       POSTGRES_USER: postgres
-      POSTGRES_DB: postgres
       POSTGRES_PASSWORD: postgres
 
     # Add "forwardPorts": ["5432"] to **devcontainer.json** to forward PostgreSQL locally.
